@@ -16,9 +16,6 @@ public class Book implements Serializable {
     @Column(name="author")
     private String author;
 
-    @Column(name="description")
-    private String description;
-
     @Column(name="summary")
     private String summary;
 
@@ -26,7 +23,6 @@ public class Book implements Serializable {
         this.id = id;
         this.title = title;
         this.author = lastName;
-        this.description = description;
         this.summary = summary;
     }
 
@@ -54,16 +50,8 @@ public class Book implements Serializable {
         return author;
     }
 
-    public void setAuthor(String author {
+    public void setAuthor(String author) {
         this.author = author;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
     }
 
     public String getSummary() {

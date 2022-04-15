@@ -34,6 +34,15 @@ public class BookRestController {
         return bookService.findAllByAuthor(author);
     }
 
+    @PostMapping("/books")
+    public Book addBook(@RequestBody Book theBook){
+        theBook.setId(0);
+        bookService.save(theBook);
+        return theBook;
+    }
+
+
+
 
 
 //    @PostMapping("/Books")

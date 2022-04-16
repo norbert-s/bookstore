@@ -9,7 +9,7 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
 
-	<title>Save Employee</title>
+	<title>Delete Book</title>
 </head>
 
 <body>
@@ -19,13 +19,13 @@
 		<h3>Book Store</h3>
 		<hr>
 
-		<p class="h4 mb-4">Save Book</p>
+		<p class="h4 mb-4">Delete Book</p>
 
-		<form action="#" th:action="@{/books/update}"
-						 th:object="${book}" th:method="POST">
+		<form action="#" th:action="@{/books/delete}"
+						 th:object="${book}" th:method="GET">
 
 			<!-- Add hidden form field to handle update -->
-			<input type="hidden" th:field="*{id}" />
+			<input type="text" th:field="*{id}" class="form-control mb-4 col-4" placeholder="Id"/>
 
 			<input type="text" th:field="*{author}"
 					class="form-control mb-4 col-4" placeholder="Title">
@@ -36,7 +36,7 @@
 			<input type="text" th:field="*{summary}"
 					class="form-control mb-4 col-4" placeholder="Summary">
 
-			<button type="submit" class="btn btn-outline-info col-2">Save</button>
+			<button type="submit" class="btn btn-outline-info col-2">Delete</button>
 
 		</form>
 

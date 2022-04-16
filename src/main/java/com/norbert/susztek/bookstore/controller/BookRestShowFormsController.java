@@ -40,4 +40,12 @@ public class BookRestShowFormsController {
         theModel.addAttribute("book",theBook);
         return "books/new-or-update-form";
     }
+    @GetMapping("/books/showDeleteForm")
+    public String showDeleteForm(@RequestParam("bookId") int theId, Model theModel){
+        Book theBook = bookService.findById(theId);
+
+        theModel.addAttribute("book",theBook);
+
+        return "books/delete-form";
+    }
 }

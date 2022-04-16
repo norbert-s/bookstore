@@ -42,9 +42,8 @@
 				   class="btn btn-outline-info btn-sm">
 					Update
 				</a>
-				<a th:href="@{/books/delete(bookId=${i.id})}"
-				   class="btn btn-outline-info btn-sm"
-				   onclick="if (!(confirm('Are you sure you want to delete this employee?'))) return false">
+				<a th:href="@{/books/showDeleteForm(bookId=${i.id})}"
+				   class="btn btn-outline-info btn-sm">
 					Delete
 				</a>
 				</td>

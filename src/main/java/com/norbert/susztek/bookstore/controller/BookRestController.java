@@ -36,10 +36,16 @@ public class BookRestController {
         return "redirect:/books";
     }
 
+//    @DeleteMapping(path="/books/delete", consumes = {MediaType.APPLICATION_FORM_URLENCODED_VALUE})
+//    public String deleteBook(@RequestParam(name="id")int theId){
+//        System.out.println("ez az id");
+//        bookService.deleteById(theId);
+//        return "redirect:/books";
+//    }
     @GetMapping("/books/delete")
-    public String deleteBook(@RequestParam(name="bookId") int id){
-        System.out.println("ez az id"+id);
-        bookService.deleteById(id);
+    public String deleteBook(@ModelAttribute("book")Book theBook){
+        System.out.println("ez az id"+theBook.getId());
+        bookService.deleteById(theBook.getId());
         return "redirect:/books";
     }
 }

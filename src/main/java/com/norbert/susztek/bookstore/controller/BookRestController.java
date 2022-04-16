@@ -4,6 +4,7 @@ package com.norbert.susztek.bookstore.controller;
 import com.norbert.susztek.bookstore.entity.Book;
 import com.norbert.susztek.bookstore.service.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -61,11 +62,6 @@ public class BookRestController {
         return bookService.findAllByAuthor(author);
     }
 
-    @GetMapping("/books/showCreateForm")
-    public String addNewBook(@RequestBody Book theBook){
-        return "new-or-update-form";
-    }
-
     @GetMapping("/books/showUpdateForm")
     public String updateBook(@RequestParam("bookId")int theId,Model theModel){
         Book theBook = bookService.findById(theId);
@@ -73,16 +69,14 @@ public class BookRestController {
         return "books/new-or-update-form";
     }
 
+    @PostMapping(path="/books/update",consumes = {MediaType.APPLICATION_FORM_URLENCODED_VALUE})
+    public String updateBook(@ModelAttribute("book") Book theBook){
+        bookService.save(theBook);
+        return "redirect:/books";
+    }
 
-
-
-
-//    @PostMapping("/Books")
-//    public Book addBook(@RequestBody Book theBook){
-////        theBook.(0);
-//        bookService.save(theBook);
-//        return theBook;
-//    }
-
-
+    @GetMapping("/books/showCreateForm")
+    public String addNewBook(@RequestBody Book theBook){
+        return "new-or-update-form";
+    }
 }

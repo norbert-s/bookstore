@@ -14,4 +14,5 @@ public interface BookService  {
     public Book save(Book theBook);
     public List<Book> findAllByOrderByAuthor();
     public List<Book> findAllByOrderByTitle();
+    public Book findById(int id);
 }

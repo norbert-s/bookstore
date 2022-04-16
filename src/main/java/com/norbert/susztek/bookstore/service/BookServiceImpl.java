@@ -8,6 +8,8 @@ import org.springframework.stereotype.Service;
 
 
 import java.util.List;
+import java.util.Optional;
+
 @Service
 public class BookServiceImpl implements BookService {
     private BookRepository bookRepository;
@@ -31,6 +33,23 @@ public class BookServiceImpl implements BookService {
     @Override
     public List<Book> findAll() {
         return (List<Book>) bookRepository.findAll();
+    }
+
+    @Override
+    public Book findById(int theId){
+        Optional<Book> result = bookRepository.findById(theId);
+
+        Book theBook = null;
+
+        if (result.isPresent()) {
+            theBook = result.get();
+        }
+        else {
+            // we didn't find the employee
+            throw new RuntimeException("Did not find employee id - " + theId);
+        }
+
+        return theBook;
     }
 
     @Override

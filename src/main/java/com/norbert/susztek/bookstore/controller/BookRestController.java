@@ -22,10 +22,6 @@ public class BookRestController {
         this.bookService = bookService;
     }
 
-//    @GetMapping("/books")
-//    public List<Book> findAll(){
-//        return bookService.findAll();
-//    }
     @GetMapping("/")
     public String getDefault(){
         //return "redirect:/books";
@@ -65,14 +61,17 @@ public class BookRestController {
         return bookService.findAllByAuthor(author);
     }
 
-//    @PostMapping("/books")
-//    public Book addBook(@RequestBody Book theBook){
-//        theBook.setId(0);
-//        bookService.save(theBook);
-//        return theBook;
-//    }
+    @GetMapping("/books/showCreateForm")
+    public String addNewBook(@RequestBody Book theBook){
+        return "new-or-update-form";
+    }
 
-
+    @GetMapping("/books/showUpdateForm")
+    public String updateBook(@RequestParam("bookId")int theId,Model theModel){
+        Book theBook = bookService.findById(theId);
+        theModel.addAttribute("book",theBook);
+        return "books/new-or-update-form";
+    }
 
 
 

@@ -63,7 +63,7 @@ public class BookRestController {
     }
 
     @GetMapping("/books/showUpdateForm")
-    public String updateBook(@RequestParam("bookId")int theId,Model theModel){
+    public String showUpdateFormk(@RequestParam("bookId")int theId,Model theModel){
         Book theBook = bookService.findById(theId);
         theModel.addAttribute("book",theBook);
         return "books/new-or-update-form";
@@ -74,9 +74,12 @@ public class BookRestController {
         bookService.save(theBook);
         return "redirect:/books";
     }
-
     @GetMapping("/books/showCreateForm")
-    public String addNewBook(@RequestBody Book theBook){
-        return "new-or-update-form";
+    public String showCreateForm(Model theModel){
+        Book theBook = new Book();
+
+        theModel.addAttribute("book",theBook);
+
+        return "books/new-or-update-form";
     }
 }

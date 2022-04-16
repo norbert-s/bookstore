@@ -37,4 +37,14 @@ public class BookServiceImpl implements BookService {
     public Book save(Book theBook) {
         return bookRepository.save(theBook);
     }
+
+    @Override
+    public List<Book> findAllByOrderByAuthor() {
+        return bookRepository.findAllByOrderByAuthor();
+    }
+
+    @Override
+    public List<Book> findAllByOrderByTitle() {
+        return bookRepository.findAllByOrderByTitle();
+    }
 }

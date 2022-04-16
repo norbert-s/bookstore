@@ -30,15 +30,29 @@ public class BookRestController {
     public String getDefault(){
         //return "redirect:/books";
         //return new RedirectView("/books");
-        return "books/index";
+        return "redirect:/books";
     }
 
     @GetMapping("/books")
     public String listBooks(Model model){
-        System.out.println("itt vagyunk");
         List<Book> theBooks=bookService.findAll();
         model.addAttribute("list_of_books",theBooks);
         return "books/list_of_books_view";
+    }
+
+    @GetMapping("/orderbyauthor")
+    public String listBooksOrderByAuthor(Model model){
+        List<Book> theBooks=bookService.findAllByOrderByAuthor();
+        model.addAttribute("list_of_books",theBooks);
+        return "books/list_of_books_view";
+    }
+
+    @GetMapping("/orderbytitle")
+    public String listBooksOrderByTitle(Model model){
+        List<Book> theBooks=bookService.findAllByOrderByTitle();
+        model.addAttribute("list_of_books",theBooks);
+
+        return"books/list_of_books_view";
     }
 
     @GetMapping("/books/title/{title}")

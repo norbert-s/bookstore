@@ -10,5 +10,6 @@ import java.util.List;
 public interface BookRepository extends CrudRepository<Book,Integer> {
     public List<Book> findAllByTitle(String title);
     public List<Book> findAllByAuthor(String author);
-    
+    public List<Book> findAllByOrderByAuthor();
+    public List<Book> findAllByOrderByTitle();
 }

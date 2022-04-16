@@ -12,4 +12,6 @@ public interface BookService  {
     public List<Book> findAllByAuthor(String author);
     public List<Book> findAll();
     public Book save(Book theBook);
+    public List<Book> findAllByOrderByAuthor();
+    public List<Book> findAllByOrderByTitle();
 }

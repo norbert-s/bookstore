@@ -35,7 +35,7 @@ public class BookRestShowFormsController {
         return "books/new-or-update-form";
     }
     @GetMapping("/books/showUpdateForm")
-    public String showUpdateFormk(@RequestParam("bookId")int theId, Model theModel){
+    public String showUpdateForm(@RequestParam("bookId")int theId, Model theModel){
         Book theBook = bookService.findById(theId);
         theModel.addAttribute("book",theBook);
         return "books/new-or-update-form";

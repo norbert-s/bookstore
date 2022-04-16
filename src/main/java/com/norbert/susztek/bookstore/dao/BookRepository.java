@@ -12,4 +12,5 @@ public interface BookRepository extends CrudRepository<Book,Integer> {
     public List<Book> findAllByAuthor(String author);
     public List<Book> findAllByOrderByAuthor();
     public List<Book> findAllByOrderByTitle();
+    //public void deleteBookById(int id);
 }

@@ -36,11 +36,10 @@ public class BookRestController {
         return "redirect:/books";
     }
 
-
-//    @GetMapping("/books/showUpdateForm2")
-//    public String sf(@RequestParam("bookId")int theId,Model theModel){
-//        Book theBook = bookService.findById(theId);
-//        theModel.addAttribute("book",theBook);
-//        return "books/new-or-update-form";
-//    }
+    @GetMapping("/books/delete")
+    public String deleteBook(@RequestParam(name="bookId") int id){
+        System.out.println("ez az id"+id);
+        bookService.deleteById(id);
+        return "redirect:/books";
+    }
 }

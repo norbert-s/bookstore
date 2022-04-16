@@ -2,7 +2,6 @@ package com.norbert.susztek.bookstore.service;
 
 
 import com.norbert.susztek.bookstore.entity.Book;
-import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -15,4 +14,5 @@ public interface BookService  {
     public List<Book> findAllByOrderByAuthor();
     public List<Book> findAllByOrderByTitle();
     public Book findById(int id);
+    public void deleteById(int theId);
 }

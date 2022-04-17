@@ -1,4 +1,4 @@
-package com.norbert.susztek.bookstore.service;
+package com.norbert.susztek.bookstore.service_book;
 
 
 import com.norbert.susztek.bookstore.entity.Book;

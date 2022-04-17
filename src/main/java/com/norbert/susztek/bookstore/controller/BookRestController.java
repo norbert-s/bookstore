@@ -2,11 +2,10 @@ package com.norbert.susztek.bookstore.controller;
 
 
 import com.norbert.susztek.bookstore.entity.Book;
-import com.norbert.susztek.bookstore.service.BookService;
+import com.norbert.susztek.bookstore.service_book.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
-import org.springframework.security.core.AuthenticatedPrincipal;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -17,7 +16,6 @@ import org.springframework.web.bind.annotation.*;
 
 
 import java.util.Collection;
-import java.util.Collections;
 import java.util.List;
 
 @Controller

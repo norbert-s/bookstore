@@ -68,6 +68,13 @@
             <artifactId>spring-security-test</artifactId>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-framework-bom</artifactId>
+            <version>5.3.16</version>
+            <type>pom</type>
+            <scope>import</scope>
+        </dependency>
     </dependencies>
     <build>
         <plugins>

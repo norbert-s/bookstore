@@ -22,8 +22,16 @@ public class BookRestController {
     public BookRestController(BookService bookService) {
         this.bookService = bookService;
     }
+    
+    @GetMapping("/")
+    public String getDefault(){
+        //return "redirect:/books";
+        //return new RedirectView("/books");
+        return "books/home";
+    }
+
      
-	@GetMapping("/showLoginView")
+	@GetMapping("/showLoginView") 
 	public String showMyLoginPage() {
 		return "login";
 	}

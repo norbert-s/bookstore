@@ -20,11 +20,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		UserBuilder users = User.withDefaultPasswordEncoder();
 		
 		auth.inMemoryAuthentication()
-				/*
-				 * .withUser(users.username("john").password("test123").roles("CUSTOMER"))
-				 * .withUser(users.username("mary").password("test123").roles("CUSTOMER",
-				 * "MANAGER"))
-				 */
+				
+				  .withUser(users.username("john").password("test123").roles("CUSTOMER"))
+				  .withUser(users.username("mary").password("test123").roles("CUSTOMER",
+				  "MANAGER"))
+				 
 			.withUser(users.username("susan").password("test123").roles("ADMIN"));
 	}
 
@@ -32,8 +32,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	protected void configure(HttpSecurity http) throws Exception {
 
 		http.authorizeRequests()
-			.antMatchers("/","books").permitAll()
-			.antMatchers("/faszom/**").hasRole("ADMIN")
+			.antMatchers("/").permitAll()
+			.antMatchers("/books").hasRole("ADMIN")
 			.and()
 			.formLogin()
 				.loginPage("/showLoginView")

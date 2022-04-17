@@ -19,12 +19,7 @@ public class BookRestShowFormsController {
         this.bookService = bookService;
     }
 
-    @GetMapping("/")
-    public String getDefault(){
-        //return "redirect:/books";
-        //return new RedirectView("/books");
-        return "redirect:/books";
-    }
+
 
     @GetMapping("/books/showCreateForm")
     public String showCreateForm(Model theModel){

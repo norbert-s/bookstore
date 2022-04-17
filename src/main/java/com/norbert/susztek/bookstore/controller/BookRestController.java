@@ -22,14 +22,24 @@ public class BookRestController {
     public BookRestController(BookService bookService) {
         this.bookService = bookService;
     }
+     
+	@GetMapping("/showLoginView")
+	public String showMyLoginPage() {
+		return "login";
+	}
 
-    @GetMapping("/books")
+    @GetMapping("/landingPage")
+    public String landingPage(Model model){
+        return "home";
+    }
+
+    @GetMapping("/books") 
     public String listBooks(Model model){
         List<Book> theBooks=bookService.findAll();
         model.addAttribute("list_of_books",theBooks);
         return "books/list_of_books_view";
-    }
-
+    } 
+    
     @PostMapping(path="/books/update",consumes = {MediaType.APPLICATION_FORM_URLENCODED_VALUE})
     public String updateBook(@ModelAttribute("book") Book theBook){
         bookService.save(theBook);

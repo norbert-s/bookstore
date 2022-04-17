@@ -5,11 +5,19 @@ import com.norbert.susztek.bookstore.entity.Book;
 import com.norbert.susztek.bookstore.service.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
+import org.springframework.security.authentication.AnonymousAuthenticationToken;
+import org.springframework.security.core.AuthenticatedPrincipal;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 
+import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 
 @Controller
@@ -22,16 +30,22 @@ public class BookRestController {
         this.bookService = bookService;
     } 
     
-    @GetMapping("/showLoginView")
-    public String showMyLoginPage() {
-        return "auth/login";
-    }
+
 
     @GetMapping("/books") 
     public String listBooks(Model model){
         List<Book> theBooks=bookService.findAll();
         model.addAttribute("list_of_books",theBooks);
-        return "list/list";
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String currentUserName="";
+        if (!(authentication instanceof AnonymousAuthenticationToken)) {
+            User userDetails = (User) authentication.getPrincipal();
+            Collection<GrantedAuthority> t = userDetails.getAuthorities();
+            String auths = t.toString();
+            System.out.println(auths);
+            if(auths.contains("ROLE_ADMIN")) return "list/list";
+        }
+        return "userview/limitedlist";
     } 
     
     @PostMapping(path="/books/update",consumes = {MediaType.APPLICATION_FORM_URLENCODED_VALUE})

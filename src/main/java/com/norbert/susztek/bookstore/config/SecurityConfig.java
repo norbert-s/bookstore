@@ -23,7 +23,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .password(encoder.encode("spring"))
                 .roles("USER")
                 .and()
-                .withUser("admin")
+                .withUser("alma")
                 .password(encoder.encode("spring"))
                 .roles("ADMIN","USER");
     }
@@ -36,10 +36,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/books/**").hasRole("ADMIN")
                 .antMatchers("/books/**").hasRole("USER")
                 .and() 
-                .formLogin()
+            .formLogin()
+//                .loginPage("/showLoginView")
                 .permitAll()
                 .and()
-                .logout()
+            .logout()
                 .logoutSuccessUrl("/")
                 .permitAll();
 

@@ -24,7 +24,7 @@ public class BookRestQueriesController {
     public String listBooksOrderByAuthor(Model model){
         List<Book> theBooks=bookService.findAllByOrderByAuthor();
         model.addAttribute("list_of_books",theBooks);
-        return "books/list_of_books_view";
+        return "list/list";
     }
 
     @GetMapping("/orderbytitle")
@@ -32,7 +32,7 @@ public class BookRestQueriesController {
         List<Book> theBooks=bookService.findAllByOrderByTitle();
         model.addAttribute("list_of_books",theBooks);
 
-        return"books/list_of_books_view";
+        return "list/list";
     }
 
     @GetMapping("/books/title/{title}")

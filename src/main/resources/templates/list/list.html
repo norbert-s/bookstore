@@ -1,5 +1,6 @@
 <!DOCTYPE HTML>
-<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:form="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:form="http://www.w3.org/1999/xhtml"
+	  xmlns:sec="http://www.w3.org/1999/xhtml">
 
 <head>
     <!-- Required meta tags -->
@@ -16,11 +17,10 @@
 <body>
 
 <div class="container">
-	<h3><a th:href="@{/books}">Book store</a></h3>
+	<h3><a th:href="@{/templates/books}">Book store</a></h3>
 
 	<hr>
-	<a th:href="@{/books/showCreateForm}"
-	   class="btn btn-outline-info btn-sm">
+	<a th:href="@{/books/showCreateForm}" class="btn btn-outline-info btn-sm" sec:authorize="hasRole('ADMIN')">
 		Add new book
 	</a>
 	<table class="table table-bordered table-striped align-items-center table-hover">
@@ -29,7 +29,7 @@
 				<th><a th:href="@{orderbytitle}">Title</a></th>
 				<th ><a th:href="@{orderbyauthor}">Author</a></th>
 				<th>Summary</th>
-				<th>Action</th>
+				<th sec:authorize="hasRole('ADMIN')">Action</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -39,11 +39,11 @@
 				<td th:text="${i.summary}" />
 				<td>
 				<a th:href="@{/books/showUpdateForm(bookId=${i.id})}"
-				   class="btn btn-outline-info btn-sm">
+				   class="btn btn-outline-info btn-sm" sec:authorize="hasRole('ADMIN')">
 					Update
 				</a>
 				<a th:href="@{/books/showDeleteForm(bookId=${i.id})}"
-				   class="btn btn-outline-info btn-sm">
+				   class="btn btn-outline-info btn-sm" sec:authorize="hasRole('ADMIN')">
 					Delete
 				</a>
 				</td>

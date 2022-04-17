@@ -27,13 +27,13 @@ public class BookRestShowFormsController {
 
         theModel.addAttribute("book",theBook);
 
-        return "books/new-or-update-form";
+        return "newbook/newbook";
     }
     @GetMapping("/books/showUpdateForm")
     public String showUpdateForm(@RequestParam("bookId")int theId, Model theModel){
         Book theBook = bookService.findById(theId);
         theModel.addAttribute("book",theBook);
-        return "books/new-or-update-form";
+        return "newbook/newbook";
     }
     @GetMapping("/books/showDeleteForm")
     public String showDeleteForm(@RequestParam("bookId") int theId, Model theModel){
@@ -41,6 +41,6 @@ public class BookRestShowFormsController {
 
         theModel.addAttribute("book",theBook);
 
-        return "books/delete-form";
+        return "delete/delete";
     }
 }

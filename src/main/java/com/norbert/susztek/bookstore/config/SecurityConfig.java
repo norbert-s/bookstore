@@ -7,13 +7,8 @@ import org.springframework.security.config.annotation.authentication.builders.Au
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
-import org.springframework.security.core.userdetails.User;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.factory.PasswordEncoderFactories;
-import org.springframework.security.crypto.password.NoOpPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 
 @Configuration
 @EnableGlobalMethodSecurity(securedEnabled = true)
@@ -24,9 +19,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         PasswordEncoder encoder = PasswordEncoderFactories.createDelegatingPasswordEncoder();
         auth
                 .inMemoryAuthentication()
+                .withUser("user")
+                .password(encoder.encode("spring"))
+                .roles("USER")
+                .and()
                 .withUser("admin")
                 .password(encoder.encode("spring"))
-                .roles("USER");
+                .roles("ADMIN","USER");
     }
     
     @Override
@@ -34,9 +33,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         httpSecurity
                 .authorizeRequests()
                 .antMatchers(HttpMethod.GET,"/").permitAll()
-                .antMatchers("/books").hasRole("USER")
-                .and()
+                .antMatchers("/books/**").hasRole("ADMIN")
+                .and() 
                 .formLogin()
+                .permitAll()
+                .and()
+                .logout()
+                .logoutSuccessUrl("/")
                 .permitAll();
 
     }

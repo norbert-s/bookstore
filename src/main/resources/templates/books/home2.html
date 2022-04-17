@@ -1,0 +1,59 @@
+
+
+<html>
+
+<head>
+	<title> Home Page</title>
+</head>
+
+<body>
+	<h2>Home Page</h2>
+	<hr>
+	
+	<p>
+	Welcome my home page!
+	</p>
+	
+	<hr>
+	
+	<!-- display user name and role -->
+	
+	<p>
+		User: <security:authentication property="principal.username" />
+		<br><br>
+		Role(s): <security:authentication property="principal.authorities" />
+	</p>
+	
+	<hr>
+	
+	<!-- Add a link to point to admin  -->
+	
+	<p>
+		<a href="${pageContext.request.contextPath}/books">Leadership Meeting</a>
+		(Only for Manager peeps)
+	</p>
+
+	
+	<hr>
+	
+	
+	<!-- Add a logout button -->
+	<form:form action="${pageContext.request.contextPath}/logout" 
+			   method="POST">
+	
+		<input type="submit" value="Logout" />
+	
+	</form:form>
+	
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+

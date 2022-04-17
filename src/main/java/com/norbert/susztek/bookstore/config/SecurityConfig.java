@@ -17,23 +17,23 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
 		// add our users for in memory authentication
 		
-		UserBuilder users = User.withDefaultPasswordEncoder();
+		//UserBuilder users = User.withDefaultPasswordEncoder();
 		
 		auth.inMemoryAuthentication()
 				
-				  .withUser(users.username("john").password("test123").roles("CUSTOMER"))
-				  .withUser(users.username("mary").password("test123").roles("CUSTOMER",
-				  "MANAGER"))
+				  .withUser("john").password("test123").roles("CUSTOMER");
+
 				 
-			.withUser(users.username("susan").password("test123").roles("ADMIN"));
+
 	}
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 
-		http.authorizeRequests()
-			.antMatchers("/").permitAll()
-			.antMatchers("/books").hasRole("ADMIN")
+		http
+				.authorizeRequests()
+				.antMatchers("/books").hasRole("CUSTOMER")
+				.antMatchers("/").permitAll()
 			.and()
 			.formLogin()
 				.loginPage("/showLoginView")

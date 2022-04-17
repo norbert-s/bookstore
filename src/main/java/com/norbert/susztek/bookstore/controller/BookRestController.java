@@ -21,23 +21,10 @@ public class BookRestController {
     @Autowired
     public BookRestController(BookService bookService) {
         this.bookService = bookService;
-    }
+    } 
     
-    @GetMapping("/")
-    public String getDefault(){
-        //return "redirect:/books";
-        //return new RedirectView("/books");
-        return "books/home";
-    }
-
-     
-	@GetMapping("/showLoginView") 
-	public String showMyLoginPage() {
-		return "login";
-	}
-
-    @GetMapping("/landingPage")
-    public String landingPage(Model model){
+    @GetMapping("/showLoginView")
+    public String showMyLoginPage() {
         return "home";
     }
 

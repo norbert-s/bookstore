@@ -5,6 +5,8 @@ import com.norbert.susztek.bookstore.entity.Book;
 import com.norbert.susztek.bookstore.service.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
+import org.springframework.security.access.annotation.Secured;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -15,6 +17,7 @@ import java.util.List;
 
 @Controller
 @RequestMapping("/")
+
 public class BookRestController {
     private BookService bookService;
 
@@ -28,6 +31,7 @@ public class BookRestController {
         return "home";
     }
 
+    @Secured("ROLE_ADMIN")
     @GetMapping("/books") 
     public String listBooks(Model model){
         List<Book> theBooks=bookService.findAll();

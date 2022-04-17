@@ -19,29 +19,53 @@
 		<h3>Book Store</h3>
 		<hr>
 
-		<p class="h4 mb-4">Delete Book</p>
+		<p class="h4 mb-4">Are you sure you want to DELETE this book ?  </p>
 
+		<p class="h4 mb-4">Clicking on DELETE will permanently delete this data. It cannot be undone ! </p>
+		
+		<table class="table table-bordered table-striped align-items-center table-hover">
+			<tbody>
+			<tr>
+				<td>id</td><td  th:text="${book.id}"></td>
+			</tr>
+			<tr>
+				<td>Title</td><td  th:text="${book.title}"></td>
+			</tr>
+			<tr>
+				<td>Author</td><td  th:text="${book.author}"></td>
+			</tr>
+			<tr>
+				<td>Summary</td><td  th:text="${book.summary}"></td>
+			</tr>
+				
+			
+			</tbody>
+		
+		
+		</table>
+		
+		
 		<form action="#" th:action="@{/books/delete}"
 						 th:object="${book}" th:method="GET">
 
 			<!-- Add hidden form field to handle update -->
-			<input type="text" th:field="*{id}" class="form-control mb-4 col-4" placeholder="Id"/>
+			<input type="hidden"  th:field="*{id}" class="form-control mb-4 col-4" placeholder="Id"/>
 
-			<input type="text" th:field="*{author}"
+			<input type="hidden"  th:field="*{author}"
 					class="form-control mb-4 col-4" placeholder="Title">
 
-			<input type="text" th:field="*{title}"
+			<input type="hidden"  th:field="*{title}"
 					class="form-control mb-4 col-4" placeholder="Author">
 
-			<input type="text" th:field="*{summary}"
+			<input type="hidden"  th:field="*{summary}"
 					class="form-control mb-4 col-4" placeholder="Summary">
 
-			<button type="submit" class="btn btn-outline-info col-2">Delete</button>
+			<button type="submit" class="btn btn-outline-danger col-2">Delete</button>
 
 		</form>
 
 		<hr>
-		<a th:href="@{/books}">Back to Books</a>
+		<a th:href="@{/books}">Back to safety</a>
 
 
 	</div>

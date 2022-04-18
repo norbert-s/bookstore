@@ -17,6 +17,10 @@ The ADMIN user is able to create, update, delete books
 The normal user is only able to read
 logout functionality is also implemented
 
+Thymeleaf is used to dinamically present data being queried from the database, etc
+Spring data is being used, therefore in a local setup only the access to a database should be changed and then the app should start up automatically
+by creating the table and the schema
+
 currently because of heroku's issues it comes with a local setup(mysql, on heroku I am using postgre), because pushing the .jar to heroku and the procfile plus the database integration does not work right now.
 
 

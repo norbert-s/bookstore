@@ -1,6 +1,6 @@
 # bookstore
 
-bookstore spring boot app with roles, security(basic authentication) user functions, and with queries
+Bookstore spring boot, Thymeleaf app with roles - admin to edit, create etc, and user to view books, security(basic authentication) user functions, and with queries
 
 Currently it is not possible to deploy to heroku with database support for security concerns
 

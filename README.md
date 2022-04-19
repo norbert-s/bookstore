@@ -6,10 +6,15 @@ https://ns-bookstore.herokuapp.com/
 
 Please click on the link and then you can access the app by the credentials that I have provided.
 
-
-Below issue is related to when one wants to deploy through the gui of heroku. The solution was to do it from the cli.
-
 Bookstore spring boot, Thymeleaf app with roles - admin to edit, create etc, and user to view books, security(basic authentication) user functions, and with queries
+
+-----------------------------------------------------------------------------------------------------
+
+edit:
+
+Below issue is related to when one wants to deploy through the gui of heroku. It has been resolved .The solution was to do it from heroku cli.
+
+
 
 Currently it is not possible to deploy to heroku with database support for security concerns
 

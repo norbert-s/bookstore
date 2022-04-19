@@ -1,6 +1,6 @@
 # bookstore
 
-bookstore app with admin, security, admin and user functions, and with queries
+bookstore spring boot app with roles, security(basic authentication) user functions, and with queries
 
 Currently it is not possible to deploy to heroku with database support for security concerns
 
@@ -24,7 +24,7 @@ by creating the table and the schema
 currently because of heroku's issues it comes with a local setup(mysql, on heroku I am using postgre), because pushing the .jar to heroku and the procfile plus the database integration does not work right now.
 
 
-Next I will be implementing user registration with roles accross 3 tables ( user, roles, and one table to reference users with roles)
+![image](https://user-images.githubusercontent.com/31439537/163974071-41b0c741-0f6f-472e-97a2-b055f2cc4da2.png)
 
 
 

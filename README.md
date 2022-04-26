@@ -1,6 +1,6 @@
 # bookstore
 
-The app has been deployed to heroku
+The app is available at
 
 https://ns-bookstore.herokuapp.com/
 

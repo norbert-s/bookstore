@@ -1,6 +1,6 @@
 # bookstore
 
-The app is available at
+The app is available at (please be patient, the pod is in sleeping mode when you start it, therefore the first time you visit the link below it will take about 15-20 seconds to load.)
 
 https://ns-bookstore.herokuapp.com/
 
